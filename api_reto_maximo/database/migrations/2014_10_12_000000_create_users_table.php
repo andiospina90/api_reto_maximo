@@ -23,8 +23,9 @@ class CreateUsersTable extends Migration
             $table->string('celphone_number');
             $table->date('birth_date');
             $table->char('gender');
-            $table->string('study_level');
             $table->char('role');
+            $table->bigInteger('department');
+            $table->bigInteger('city');
             $table->rememberToken();
             $table->timestamps();
         });
