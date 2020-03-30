@@ -108,7 +108,7 @@ class RegisterController extends BaseController
 
         else{ 
 
-            return $this->sendError('Unauthorised.', ['error'=>'Unauthorised']);
+            return $this->sendError('Los datos ingresados no son los correctos.', ['error'=>'Los datos ingresados no son los correctos']);
 
         } 
 
