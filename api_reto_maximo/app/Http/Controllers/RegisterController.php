@@ -51,9 +51,20 @@ class RegisterController extends BaseController
 
         $input = $request->all();
 
-        $input['password'] = bcrypt($input['password']);
+        
+        $user["name"] = $input['name'];
+        $user["last_name"] = $input['lastName'];
+        $user["celphone_number"] = $input['phoneNumber'];
+        $user["email"] = $input['email'];
+        $user["password"] = bcrypt($input['password']);
+        $user["birth_date"] = $input['birthDate'];
+        $user["gender"] = $input['gender'];
+        $user["role"] = "T";
+        $user["department"] = 1;
+        $user["city"] = 1;
+        
 
-        $user = User::create($input);
+        $user = User::create($user);
 
         $success['token'] =  $user->createToken('retoMaximo')->accessToken;
 
