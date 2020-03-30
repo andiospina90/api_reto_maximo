@@ -66,7 +66,7 @@ class RegisterController extends BaseController
 
         $user = User::create($user);
 
-        $success['token'] =  $user->createToken('retoMaximo')->accessToken;
+        //$success['token'] =  $user->createToken('retoMaximo')->accessToken;
 
         $success['name'] =  $user->name;
 
