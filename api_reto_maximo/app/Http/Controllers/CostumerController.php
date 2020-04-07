@@ -38,6 +38,9 @@ class CostumerController extends BaseController
      */
     public function store(Request $request)
     {
+        try {
+            //code...
+        
         $validator = Validator::make($request->all(), [
 
             'name' => 'required',
@@ -71,6 +74,10 @@ class CostumerController extends BaseController
         $costumer->trainer()->attach($costumer->id, ['trainer_id' => $input['trainerId']]);
 
         return $this->sendResponse('register', 'User register successfully.');
+
+    } catch (\Throwable $th) {
+        return  $this->sendError('register fail', ['error'=>'Hubo un error al momento de ingresar los datos del cliente']);
+    }
 
 
     }
