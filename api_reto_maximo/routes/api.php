@@ -22,10 +22,14 @@ use Illuminate\Support\Facades\Route;
 // });
 Route::post('register', 'RegisterController@register');
 Route::post('login', 'RegisterController@login');
+Route::get('studyLevel','StudyLevelController@get');
 
 
 Route::middleware('auth:api')->group( function () {
 
-    Route::resource('user', 'UserController');
+    Route::post('costumer', 'CostumerController@store');
+    
+    
+    Route::get('trainer/{id}/costumers','TrainerController@trainerCostumers');
 
 });

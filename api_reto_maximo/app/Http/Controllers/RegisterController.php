@@ -66,6 +66,10 @@ class RegisterController extends BaseController
 
         $user = User::create($user);
 
+        $trainerReg['user_id'] = $user->id;
+        $trainerReg['study_level'] = $input['studyLevel'];
+        $trainer = Trainer::create($trainerReg);
+
         //$success['token'] =  $user->createToken('retoMaximo')->accessToken;
 
         $success['name'] =  $user->name;
@@ -96,9 +100,9 @@ class RegisterController extends BaseController
 
             $user = Auth::user(); 
 
-            $success['token'] =  $user->createToken('MyApp')-> accessToken; 
+            $success['token'] =  $user->createToken('MyApp')->accessToken; 
 
-            $success['name'] =  $user->name;
+            $success['user'] =  $user;
 
    
 
