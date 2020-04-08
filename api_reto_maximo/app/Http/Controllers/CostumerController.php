@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\User;
 use App\Costumer;
+use App\Trainer;
 use Validator;
 
 class CostumerController extends BaseController
@@ -38,7 +39,7 @@ class CostumerController extends BaseController
      */
     public function store(Request $request)
     {
-        try {
+        // try {
             //code...
         
         $validator = Validator::make($request->all(), [
@@ -69,15 +70,17 @@ class CostumerController extends BaseController
         $user = User::create($user);
 
         $costumerReg['user_id'] = $user->id;
-        $costumer = Costumer::create($costumerReg);   
+       $costumer = Costumer::create($costumerReg);
+        
+        $trainer = Trainer::where('user_id',$input['trainerId'])->select('id')->first();
 
-        $costumer->trainer()->attach($costumer->id, ['trainer_id' => $input['trainerId']]);
+        $costumer->trainer()->attach($costumer->id, ['trainer_id' => $trainer->id ]);
 
-        return $this->sendResponse('register', 'User register successfully.');
+        return $this->sendResponse($trainer, 'User register successfully.');
 
-    } catch (\Throwable $th) {
-        return  $this->sendError('register fail', ['error'=>'Hubo un error al momento de ingresar los datos del cliente']);
-    }
+    // } catch (\Throwable $th) {
+    //     return  $this->sendError('register fail', ['error'=>'Hubo un error al momento de ingresar los datos del cliente']);
+    // }
 
 
     }
