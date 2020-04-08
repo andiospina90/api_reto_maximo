@@ -14,6 +14,6 @@ class Trainer extends Model
 
     public function costumer()
     {
-        return $this->belongsToMany('App\Costumer','customer_trainer');
+        return $this->belongsToMany('App\Costumer','customer_trainer','trainer_id','costumer_id');
     }
 }
