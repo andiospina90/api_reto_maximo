@@ -94,7 +94,7 @@ class TrainerController extends BaseController
         // ->get();
 
         $costumersTrainer = Trainer::where('user_id',$id)->select('id')->with('costumer.user')->get();
-
+        dd($costumersTrainer);
         $newCostumersTrainer = collect();
 
         foreach ($costumersTrainer as $costumerTrainer) {
