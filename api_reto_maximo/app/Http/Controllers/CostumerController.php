@@ -76,7 +76,7 @@ class CostumerController extends BaseController
 
         $costumer->trainer()->attach($costumer->id, ['trainer_id' => $trainer->id ]);
 
-        return $this->sendResponse($trainer, 'User register successfully.');
+        return $this->sendResponse($trainer, 'Se ha registrado correctamente el entrenador.');
 
     // } catch (\Throwable $th) {
     //     return  $this->sendError('register fail', ['error'=>'Hubo un error al momento de ingresar los datos del cliente']);
